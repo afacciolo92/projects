@@ -69,3 +69,21 @@ Research paper examining the viability of solar photovoltaic systems as a non-wi
 An analytical report evaluating the accuracy of claims made by political figures, cross-referencing statements against available data and public sources.
 
 [Report](fact-checking-political-figures/)
+
+---
+
+## Trading Bot — LLM-Driven Sentiment Trading Agent
+
+An LLM-powered trading bot (LeafTrade) that combines fundamental screening, technical analysis, and GPT-4o-mini sentiment scoring to trade S&P 500 stocks via the Alpaca paper trading API. Designed for student investors seeking inflation-beating returns with disciplined risk management.
+
+**What the pipeline includes:**
+- 5-criteria funnel: quality screen (10yr return, Sharpe), liquidity filter, risk/volatility screen, technical trend confirmation (MA50, RSI), and LLM sentiment gating (score, consensus, headline count)
+- Risk-based position sizing: 2% portfolio risk per trade, 15% position cap, ATR-based trailing stops
+- Full backtesting suite with portfolio simulation, parameter optimization, and equity curve analysis
+- Live paper trading mode with Alpaca integration, bracket orders, and demo mode for presentations
+
+**Key results:** Backtested strategy achieved a 1.31 Sharpe ratio and 19.2% annualized return over the test period, outperforming a buy-and-hold S&P 500 baseline on a risk-adjusted basis.
+
+**Tools:** Python, OpenAI GPT-4o-mini, Alpaca API, pandas, NumPy, Matplotlib, yfinance, NewsAPI
+
+[Report](trading-bot/LLM-Driven-Trading-Agent-LeafTrade.pdf) | [Code](trading-bot/) | [README](trading-bot/README.md)
