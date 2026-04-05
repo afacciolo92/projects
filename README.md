@@ -87,3 +87,21 @@ An LLM-powered trading bot (LeafTrade) that combines fundamental screening, tech
 **Tools:** Python, OpenAI GPT-4o-mini, Alpaca API, pandas, NumPy, Matplotlib, yfinance, NewsAPI
 
 [Report](trading-bot/LLM-Driven-Trading-Agent-LeafTrade.pdf) | [Code](trading-bot/) | [README](trading-bot/README.md)
+
+---
+
+## Toronto KSI Collision Hotspot Dashboard
+
+An interactive Tableau dashboard analyzing Killed or Seriously Injured (KSI) collision events across Toronto (2006–2023), built from City of Toronto Open Data Portal records. Designed for city executives and public safety planners who need actionable, location-specific intelligence to allocate enforcement resources and evaluate road safety policy.
+
+**What the dashboard covers:**
+- Geographic hotspot map of the 20 most dangerous intersections by cumulative KSI count, with proportional symbol encoding
+- Six cross-filters (year range, time of day, four contributing-factor toggles) driving simultaneous updates across all views
+- Time-of-day decomposition across five periods (Night, AM Peak, PM Peak, Midday, Overnight)
+- Executive KPI tiles showing total KSI count and contributing-factor shares, updated dynamically with every filter change
+
+**Key findings:** Aggressive driving is flagged in 50.7% of KSI collisions at the Top 20 hotspot intersections. Night hours (6 PM–midnight) carry the largest risk share at 29.85%. Finch Ave W & Weston Rd consistently ranks as the single most dangerous hotspot.
+
+**Tools:** Tableau Desktop, City of Toronto Open Data Portal
+
+[Report](toronto-ksi-dashboard/Toronto_KSI_Collision_Hotspot_Report.pdf) | [Dashboard](toronto-ksi-dashboard/) | [README](toronto-ksi-dashboard/README.md)
