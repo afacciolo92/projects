@@ -138,3 +138,21 @@ A fine-tuning project on Facebook's DETR (DEtection TRansformer) with a ResNet-5
 **Tools:** Python, PyTorch, Hugging Face Transformers + Datasets, DETR (ResNet-50), PIL, Google Colab
 
 [Notebook](detr-object-detection/DETR%20Object%20Detection%20-%20Candy%20Counter.ipynb)
+
+---
+
+## Neural Network from Scratch — NumPy Backpropagation
+
+A 3-layer fully connected neural network implemented end-to-end in pure NumPy — no TensorFlow, PyTorch, or autodiff. Every layer, activation, loss, and optimizer is written by hand, with explicit forward and backward passes that make the gradient math visible.
+
+**What's implemented from scratch:**
+- `DenseLayer`: weight init (`N(0,1) * 0.01`), bias init at zero, forward computes `z = X @ W + b` and caches inputs, backward computes `dW`, `db`, and `dinputs` via the chain rule
+- `ReLu`: forward `max(0, z)`, backward zeros out the gradient where `z ≤ 0`
+- `Softmax`: row-wise softmax with the standard max-subtraction trick for numerical stability; backward implements the full Jacobian-vector product (`diag(p) − p pᵀ`) per row
+- `CrossEntropyLoss`: clipped one-hot cross-entropy with batch-size-normalized gradients
+- `SGD`: per-layer parameter update (`W ← W − η · dW`, `b ← b − η · db`)
+- Mini-batch training loop with per-epoch shuffling, one-hot encoding, and a 3–4–8–3 architecture trained on a 3-class dataset with a held-out test split
+
+**Tools:** Python, NumPy
+
+[Code](neural-network-from-scratch/Neural%20Network%20from%20Scratch%20-%20NumPy%20Backpropagation.py)
