@@ -105,3 +105,20 @@ An interactive Tableau dashboard analyzing Killed or Seriously Injured (KSI) col
 **Tools:** Tableau Desktop, City of Toronto Open Data Portal
 
 [Report](toronto-ksi-dashboard/Toronto_KSI_Collision_Hotspot_Report.pdf) | [Dashboard](toronto-ksi-dashboard/) | [README](toronto-ksi-dashboard/README.md)
+
+---
+
+## When the Platform Shapes the Person: An Ethical Analysis of AI-Enhanced Surveillance Platforms
+
+A graduate paper examining AI-enhanced surveillance platforms — social media systems, search engines, and adjacent digital environments whose value lies less in the service they appear to provide than in the behavioural data they capture and the predictions they generate. The argument moves beyond familiar concerns about misinformation and privacy to ask a structural question about the kind of human and civic world this technology presupposes and produces.
+
+**What the paper covers:**
+- The shift from communication tool to behavioural infrastructure, where social interaction is folded into a commercial logic that converts human experience into a "predictive commodity" (Lanchester; Zuboff & Klein)
+- James Scott's *Seeing Like a State* applied to algorithmic legibility — how users are simplified into traces, patterns, and ranked probabilities in order to be governable and monetizable
+- Martin Buber's *I and Thou* applied to platform design, framing surveillance platforms as an institutionalized I–It mode of relation where the user is approached as segment, target, or attention reservoir rather than as a person
+- Don Tapscott's framing of digital infrastructure as a public-trust question, used to argue that surveillance-based business models deform civic deliberation, not just individual privacy
+- A normative argument that the deepest harm is structural: incentives that reward reaction over reflection, immediacy over judgment, and engagement over truth
+
+**Tools:** Long-form ethical analysis grounded in Zuboff & Klein, Lanchester, Scott, Buber, and Tapscott
+
+[Paper](ai-surveillance-ethics/Ethical%20Analysis%20of%20AI-Enhanced%20Surveillance%20Platforms.pdf)
