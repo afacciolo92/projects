@@ -122,3 +122,19 @@ A graduate paper examining AI-enhanced surveillance platforms — social media s
 **Tools:** Long-form ethical analysis grounded in Zuboff & Klein, Lanchester, Scott, Buber, and Tapscott
 
 [Paper](ai-surveillance-ethics/Ethical%20Analysis%20of%20AI-Enhanced%20Surveillance%20Platforms.pdf)
+
+---
+
+## DETR Object Detection — Candy Counter
+
+A fine-tuning project on Facebook's DETR (DEtection TRansformer) with a ResNet-50 backbone, adapted for a custom 8-class candy detection task. The notebook walks through the full pipeline — from converting Label Studio's COCO export into a Hugging Face `datasets`-compatible format, through transfer learning, evaluation, and packaging the model behind a deployable inference function.
+
+**What the pipeline includes:**
+- COCO → Hugging Face conversion: parsing `result.json`, attaching per-image bounding boxes and category IDs, building `id2label` / `label2id` maps, writing JSONL metadata, and producing an `imagefolder` dataset with an 80/20 train/validation split
+- Fine-tuning: `facebook/detr-resnet-50` checkpoint loaded via `DetrForObjectDetection` with `ignore_mismatched_sizes=True` to swap in the new classification head; the image processor handles bbox encoding via `with_transform`
+- Training loop: a version-agnostic `TrainingArguments` builder that probes the installed Transformers version for supported keys (`evaluation_strategy` vs `eval_strategy`, FP16 availability, etc.), then trains via Hugging Face `Trainer` with per-epoch evaluation and best-model loading
+- Inference: a `candy_counter()` function that accepts a NumPy or PIL image, runs the saved model, post-processes detections at a tunable threshold, and returns per-class counts across 8 candy types (Moon, Insect, Black_star, Grey_star, Unicorn_whole, Unicorn_head, Owl, Cat)
+
+**Tools:** Python, PyTorch, Hugging Face Transformers + Datasets, DETR (ResNet-50), PIL, Google Colab
+
+[Notebook](detr-object-detection/DETR%20Object%20Detection%20-%20Candy%20Counter.ipynb)
