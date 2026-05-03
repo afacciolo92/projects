@@ -156,3 +156,19 @@ A 3-layer fully connected neural network implemented end-to-end in pure NumPy �
 **Tools:** Python, NumPy
 
 [Code](neural-network-from-scratch/Neural%20Network%20from%20Scratch%20-%20NumPy%20Backpropagation.py)
+
+---
+
+## LSTM and GRU Time-Series Forecasting
+
+An RNN-based demand forecasting pipeline that compares LSTM and GRU architectures against naive and moving-average baselines, evaluated on both statistical accuracy (RMSE) and an asymmetric-cost business metric.
+
+**What the pipeline includes:**
+- Data prep: time-based 80/20 train/val split, MinMax scaling fit on training only, and a 7-day lookback window converting the 1D demand series into supervised sequences for the RNN
+- Model comparison: simple `LSTM(32) → Dense(1)` and `GRU(32) → Dense(1)` architectures with identical training (Adam, MSE loss, 20 epochs, batch size 16); the lower-RMSE model is selected automatically
+- Baselines: naive `D̂[t+1] = s[t]` and a 7-day moving average, aligned to the same validation window for apples-to-apples comparison
+- Business-metric evaluation: a Total Inventory Cost calculation with asymmetric holding (`$1`) and stockout (`$5`) penalties — a forecast that minimizes RMSE may not minimize cost when over- and under-forecasting are penalized differently
+
+**Tools:** Python, TensorFlow/Keras, scikit-learn, pandas, NumPy
+
+[Code](lstm-gru-forecasting/LSTM%20and%20GRU%20Time-Series%20Forecasting.py)
