@@ -172,3 +172,19 @@ An RNN-based demand forecasting pipeline that compares LSTM and GRU architecture
 **Tools:** Python, TensorFlow/Keras, scikit-learn, pandas, NumPy
 
 [Code](lstm-gru-forecasting/LSTM%20and%20GRU%20Time-Series%20Forecasting.py)
+
+---
+
+## Customer360 Data Product
+
+A full Customer360 implementation that turns a transactional star schema (orders, conversions, customers, products, dates) into a per-customer, per-week analytical table covering every week between conversions — including weeks with no orders. The output is a single denormalized `customer_info` table that supports cohort, lifetime-value, and conversion-channel analysis directly, without further joins.
+
+**What the implementation covers:**
+- Schema design: `customer360.customer_info` with conversion sequencing (`conversion_number`, `conversion_type`, channel), week tracking (`order_week`, `week_counter`, `next_conversion_week`), and cumulative revenue at both per-conversion and lifetime grain
+- Multi-CTE pipeline: `order_with_product` enriches the orders fact with product, date, and customer dimensions and derives `price_before_discount`; `customer_and_conversion` joins conversions to customers and uses `RANK() OVER (PARTITION BY customer_id ORDER BY conversion_id)` for conversion ordering and `LEAD(...)` to look ahead to the next conversion week
+- Weekly sequence generation: `week_count` enumerates every distinct week in the date dimension; `conv_with_counter` cross-joins each conversion to all subsequent weeks and uses `ROW_NUMBER() OVER (PARTITION BY customer_id, conversion_number)` to attach a per-conversion week counter; `conv_cust_weekCount` filters to weeks before the next conversion (or end-of-data when none exists)
+- Final insert: weekly orders aggregated in `grouped_orders`, joined back, and `SUM(...) OVER (PARTITION BY ... ORDER BY week_counter)` window functions compute conversion-level and lifetime-level cumulative revenue running totals
+
+**Tools:** SQL (T-SQL) — multi-CTE design, RANK, ROW_NUMBER, LEAD, window-function running sums
+
+[Report](customer360/Customer360%20Implementation%20Report.pdf) | [SQL](customer360/Customer360_Implementation.sql)
